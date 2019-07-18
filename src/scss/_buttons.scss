@@ -1,0 +1,31 @@
+.btn {
+	position: absolute;
+	left: 50%;
+	width: 200px;
+	border: none;
+	background: none;
+	color: $color--first;
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 20px;
+	font-family: Lato;
+	cursor: pointer;
+	transition: background-color .3s, color .3s;
+	transform: translateX(-50%);
+	&:hover {
+		font-weight: 600;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+.btn--new {
+	top: 45px;
+}
+.btn--roll {
+	top: 403px;
+}
+.btn--hold {
+	top: 467px;
+}
