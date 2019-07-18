@@ -25,12 +25,15 @@ body {
 
 .wrapper {
 	position: relative;
-	display: flex;
 	margin: 0 auto;
 	width: 1000px;
 	min-height: 65%;
 	background-color: $color--fourth;
 	box-shadow: 0 10px 50px rgba(0, 0, 0, .3);
+}
+
+.game {
+	display: flex;
 }
 
 .final-score {

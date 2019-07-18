@@ -9,8 +9,7 @@
     "build": "rollup -c config/rollup/rollup.config.js"
   },
   "browserslist": [
-    "chrome > 74",
-    "ie > 10"
+    "chrome > 74"
   ],
   "devDependencies": {
     "@babel/core": "^7.5.4",
