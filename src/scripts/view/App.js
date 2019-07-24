@@ -1,16 +1,19 @@
+import { strings } from '../config';
+
 const App = {
 	render() {
 		const view = `           
-            <button class="btn btn--new">New game</button>
-			<div class="game"></div>
-            <input type="number" placeholder="Final score: 100" class="final-score">
+            <button class="btn ${strings.btnNew}">New game</button>
+			<div class="${strings.playerList}"></div>
+			<label class="${strings.finalLabel}" for="finalScore">Final Score</label>
+            <input class="${strings.finalInput}" name="finalScore" type="number">
         `;
 		return view;
 	},
 	afterRender: () => ({
-		btnNew: document.querySelector('.btn--new'),
-		finalScore: document.querySelector('.final-score'),
-		game: document.querySelector('.game'),
+		btnNew: document.querySelector(`.${strings.btnNew}`),
+		finalScore: document.querySelector(`.${strings.finalInput}`),
+		game: document.querySelector(`.${strings.playerList}`),
 	})
 };
 

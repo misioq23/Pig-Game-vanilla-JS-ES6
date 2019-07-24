@@ -1,16 +1,18 @@
+import { strings } from '../config';
+
 const NewGame = {
 	render() {
 		const view = `           
-			<div class="dice__wrapper"></div>
-            <button class="btn btn--roll">Roll dice</button>
-            <button class="btn btn--hold">Hold</button>
+			<div class="${strings.diceWrapper}"></div>
+            <button class="btn ${strings.btnRoll}">Roll dice</button>
+            <button class="btn ${strings.btnHold}">Hold</button>
         `;
 		return view;
 	},
 	afterRender: () => ({
-		btnRoll: document.querySelector('.btn--roll'),
-		btnHold: document.querySelector('.btn--hold'),
-		diceWrapper: document.querySelector('.dice__wrapper'),
+		btnRoll: document.querySelector(`.${strings.btnRoll}`),
+		btnHold: document.querySelector(`.${strings.btnHold}`),
+		diceWrapper: document.querySelector(`.${strings.diceWrapper}`),
 	})
 };
 

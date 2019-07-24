@@ -36,9 +36,22 @@ body {
 	display: flex;
 }
 
-.final-score {
+.final-score__label {
 	position: absolute;
-	top: 520px;
+	top: 530px;
+	left: 50%;
+	padding: 10px;
+	width: 160px;
+	color: $color--first;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 12px;
+	transform: translateX(-50%);
+}
+
+.final-score__input{
+	position: absolute;
+	top: 560px;
 	left: 50%;
 	padding: 10px;
 	width: 160px;
@@ -49,11 +62,6 @@ body {
 	transform: translateX(-50%);
 }
 
-.final-score:focus {
+.final-score__input:focus {
 	outline: none;
-}
-
-.player--winner .player__name {
-	color: $color--second;
-	font-weight: 300;
 }

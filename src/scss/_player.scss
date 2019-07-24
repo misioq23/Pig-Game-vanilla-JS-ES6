@@ -65,3 +65,8 @@
 .player__current-score {
 	font-size: 30px;
 }
+
+.player--winner .player__name {
+	color: $color--second;
+	font-weight: 300;
+}
