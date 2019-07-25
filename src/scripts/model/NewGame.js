@@ -2,12 +2,14 @@ import { element } from '../config';
 import Player from '../view/Player';
 import Dice from '../view/Dice';
 import NewGame from '../view/NewGame';
+
 const newGame = () => {
 	const data = {
 		activePlayer: 0,
 		maxScore: parseInt(element.finalScore.value, 10),
 		names: ['Player 1', 'Player 2']
 	};
+
 	// Clears app GUI
 	element.game.innerHTML = '';
 	// Prints main game interface
@@ -60,8 +62,8 @@ const newGame = () => {
 			// checks if the player has won
 			if (data[data.activePlayer].score >= data.maxScore) {
 				data[data.activePlayer].win();
-				element.btnRoll.disabled = true;
-				element.btnHold.disabled = true;
+				element.btnRoll.parentNode.removeChild(element.btnRoll);
+				element.btnHold.parentNode.removeChild(element.btnHold);
 			} else {
 				changePlayer();
 			}
