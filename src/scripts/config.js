@@ -1,15 +1,14 @@
 const element = {
-	wrapper: document.querySelector('.wrapper')
+	wrapper: document.querySelector('.wrapper'),
+	game: document.querySelector('.game'),
+	btnNew: document.querySelector('.btn--new'),
+	finalScore: document.querySelector('.final-score__input'),
 };
 
 const strings = {
-	btnNew: 'btn--new',
 	btnHold: 'btn--hold',
 	btnRoll: 'btn--roll',
-	playerList: 'game',
 	diceWrapper: 'dice__wrapper',
-	finalLabel: 'final-score__label',
-	finalInput: 'final-score__input'
 };
 
 export { element, strings };

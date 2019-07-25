@@ -1,13 +1,10 @@
 import { element } from '../config';
-
-function changeName(name) {
-	return name.split(' ').join('_');
-}
+import { removeSpace } from '../utils/utils';
 
 class Player {
 
-	constructor(name, active = false) {
-		this.id = changeName(name);
+	constructor(name, active) {
+		this.id = removeSpace(name);
 		this.name = name;
 		this.active = active;
 		this.score = 0;
@@ -33,7 +30,7 @@ class Player {
 	}
 
 	showCurrentScore(count = 0) {
-		!!count ? this.currentScore += count : this.currentScore = 0;
+		this.currentScore += !!count ? count : -this.currentScore;
 		this.DOMCurrentScore.textContent = this.currentScore;
 	}
 
