@@ -5,7 +5,7 @@ import NewGame from '../view/NewGame';
 const newGame = () => {
 	const data = {
 		activePlayer: 0,
-		maxScore: parseInt(element.finalScore.value, 10) || 100,
+		maxScore: parseInt(element.finalScore.value, 10),
 		names: ['Player 1', 'Player 2']
 	};
 	// Clears app GUI

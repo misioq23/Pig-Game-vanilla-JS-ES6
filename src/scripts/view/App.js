@@ -6,7 +6,7 @@ const App = {
             <button class="btn ${strings.btnNew}">New game</button>
 			<div class="${strings.playerList}"></div>
 			<label class="${strings.finalLabel}" for="finalScore">Final Score</label>
-            <input class="${strings.finalInput}" name="finalScore" type="number">
+            <input class="${strings.finalInput}" value="100" name="finalScore" type="number">
         `;
 		return view;
 	},
