@@ -1,19 +1,16 @@
 import { element, strings } from '../config';
 
 /**
- * A player object view manager
- * @param {object} playersModel object with players array
+ * A players objects view manager
  */
-class PlayersView {
-	constructor({ players }) {
-		this.players = players;
-	}
+const playersView = {
 	/**
 	 * Method render players' interface
-	 * @returns {undefined} returns nothing
+	 * @param {array} playersArr Array with players' objects
+	 * @returns {undefined}
 	 */
-	render() {
-		const template = this.players.map(player => `
+	render(playersArr) {
+		const template = playersArr.map(player => `
 			<div id="${player.id}" class="player ${ !player.isActive || strings.playerActive }">
 				<div class="player__name">${player.name}</div>
 				<div class="player__score">${player.score}</div>
@@ -23,40 +20,41 @@ class PlayersView {
 				</div>
 			</div>`).join(' ');
 		element.playersWrapper.innerHTML = template;
-		this.players.forEach(player => this[player.id] = document.getElementById(player.id));
-	}
+		playersArr.forEach(player => this[player.id] = document.getElementById(player.id));
+	},
 
 	/**
 	 * Method re-renders player's current score
 	 * @param {object} player Active Player's object
-	 * @returns {undefined} returns nothing
+	 * @returns {undefined}
 	 */
 	showCurrentScore(player) {
 		this[player.id].querySelector('.player__current-score').textContent = player.currentScore;
-	}
+	},
 
 	/**
 	 * Method re-renders score and current score
 	 * @param {object} player Active Player's object
-	 * @returns {undefined} returns nothing
+	 * @returns {undefined}
 	 */
 	showScore(player) {
 		this[player.id].querySelector('.player__score').textContent = player.score;
 		this.showCurrentScore(player);
-	}
+	},
 
 	/**
 	 * Method toggles players's active class
-	 * @returns {undefined} returns nothing
+	 * @param {array} playersArr Array with players' objects
+	 * @returns {undefined}
 	 */
-	toggleActive() {
-		this.players.forEach(player => this[player.id].classList.toggle(strings.playerActive));
-	}
+	toggleActive(playersArr) {
+		playersArr.forEach(player => this[player.id].classList.toggle(strings.playerActive));
+	},
 
 	/**
 	 * Method adds to player- winner class and changes name to winner
 	 * @param {string} playerID Player's ID
-	 * @returns {undefined} returns nothing
+	 * @returns {undefined}
 	 */
 	showWinner(playerID) {
 		this[playerID].className = `player ${strings.playerWinner}`;
@@ -64,4 +62,4 @@ class PlayersView {
 	}
 };
 
-export default PlayersView;
+export default playersView;

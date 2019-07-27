@@ -3,7 +3,7 @@ import { element, strings } from '../config';
 /**
  * A hold & roll buttons view manager object.
  */
-class ButtonsView {
+const buttonsView = {
 	/**
 	 * Method renders hold and roll buttons
 	 * @returns {undefined}
@@ -14,7 +14,7 @@ class ButtonsView {
 			<button class="btn ${strings.btnHold}">Hold</button>
 		`;
 		element.appWrapper.insertAdjacentHTML('afterbegin', view);
-	}
+	},
 
 	/**
 	 * Method removes hold and roll buttons if they are in the DOM tree
@@ -22,8 +22,8 @@ class ButtonsView {
 	 */
 	remove() {
 		const btnArr = [...document.querySelectorAll(`.${strings.btnHold}, .${strings.btnRoll}`)];
-		if (btnArr) btnArr.forEach(element => element.parentNode.removeChild(element));
+		if (btnArr) btnArr.forEach(button => button.parentNode.removeChild(button));
 	}
 };
 
-export default ButtonsView;
+export default buttonsView;

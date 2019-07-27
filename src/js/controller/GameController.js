@@ -1,11 +1,11 @@
 /**
- * A game's main controller
- * @param {object} playersModel players model object
- * @param {object} diceModel dice model object
- * @param {object} playersView players view object
- * @param {object} diceView dices view object
- * @param {object} buttonsView hold and roll buttons view object
- * @param {number} maxScore the minimum score needed to win
+ * A game's controller. Here is located main app's logic.
+ * @param {object} playersModel data model with players' objects array
+ * @param {object} diceModel data model to draw numbers for dices and store them in array
+ * @param {object} playersView object literal with methods to render and changes players GUI
+ * @param {object} diceView object literal with methods to render and remove dices
+ * @param {object} buttonsView object literal with methods to render and remove btns roll and hold
+ * @param {number} maxScore minimum score necessary to win
  */
 class GameController {
 	constructor(playersModel, diceModel, playersView, diceView, buttonsView, maxScore) {
@@ -17,56 +17,58 @@ class GameController {
 		this.maxScore = maxScore;
 	}
 	/**
-	 * Method inits new game: firstly resets GUI next renders players, roll and hold buttons
-	 * @returns {undefined} inits game
+	 * Method inits new game: firstly resets GUI, next renders players and buttons.
+	 * @returns {undefined}
 	 */
 	init() {
 		// removes hold and roll buttons and dices as well
 		this.buttonsView.remove();
 		this.diceView.remove();
 		// renders player's interface
-		this.playersView.render();
+		this.playersView.render(this.players.players);
 		// renders buttons with event listeners
 		this.buttonsView.render();
 	}
 	/**
-	 * Helper method to change player
-	 * @returns {undefined} returns nothing
+	 * Changes active player.
+	 * @returns {undefined}
 	 */
 	changePlayer() {
 		this.players.changePlayer();
-		this.playersView.toggleActive();
+		this.playersView.toggleActive(this.players.players);
 	}
 	/**
-	 * method invoked by roll btn. Draws random numbers, pass it to player's object and if there's one its changes player
-	 * @returns {undefined} returns nothing
+	 * Manages passing array with drawed number to player's object.
+	 * It also will change active player if one of a dice is 1
+	 * @returns {undefined}
 	 */
 	rollDice() {
-		// draws random numbers
+		// draws random numbers and renders them
 		this.dices.roll(2);
 		this.diceView.render(this.dices.numbers);
 
-		// update player's current score
+		// updates player's current score
 		this.players.activePlayer.setCurrentScore(this.dices.numbers);
 		this.playersView.showCurrentScore(this.players.activePlayer);
 
-		// if dropped only one 1 changes player
+		// if one of a numbers is 1, changes player
 		if (this.dices.numbers.join('') !== '11' && this.dices.numbers.includes(1)) this.changePlayer();
 	}
 	/**
-	 * method invoked by hold btn. Adds active player's currentScore to score and changes player. It also checks whether the player is winner or not.
-	 * @returns {undefined} returns nothing
+	 * Manages passing active player's currentScore to its total score and then changes active player.
+	 * It also will end game if player's score is greater or equals maxScore.
+	 * @returns {undefined}
 	 */
 	holdScore() {
-		const player = this.players.activePlayer;
+		const activePlayer = this.players.activePlayer;
 		// prevents clicking button if currentScore is 0 or game is over
-		if (player.score < this.maxScore && player.currentScore > 0) {
-			player.setScore();
-			this.playersView.showScore(player);
+		if (activePlayer.score < this.maxScore && activePlayer.currentScore > 0) {
+			activePlayer.setScore();
+			this.playersView.showScore(activePlayer);
 			this.diceView.remove();
-			// checks whether the player is winner
-			if (player.score >= this.maxScore) {
-				this.playersView.showWinner(player.id);
+			// checks whether the active player is winner
+			if (activePlayer.score >= this.maxScore) {
+				this.playersView.showWinner(activePlayer.id);
 				this.buttonsView.remove();
 			} else {
 				this.changePlayer();

@@ -3,8 +3,7 @@ import { element, strings } from '../config';
 /**
  * A dice object view manager.
  */
-class DicesView {
-
+const dicesView = {
 	/**
 	 * Method renders dices based on passed array with random numbers
 	 * @param {array} numberArr array with numbers to print
@@ -16,7 +15,7 @@ class DicesView {
 			<img src="assets/dice-${number}.svg" alt="Dice" class="${strings.dice}" id="${strings.dice}-${index + 1}">
 		`).join(' ');
 		element.appWrapper.insertAdjacentHTML('afterbegin', view);
-	}
+	},
 	/**
 	 * Method removes dices from wrapper
 	 * @returns {undefined}
@@ -27,4 +26,4 @@ class DicesView {
 	}
 };
 
-export default DicesView;
+export default dicesView;
