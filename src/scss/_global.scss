@@ -23,7 +23,7 @@ body {
 	color: $color--first;
 }
 
-.wrapper {
+.app-wrapper {
 	position: relative;
 	margin: 0 auto;
 	width: 1000px;
@@ -32,7 +32,7 @@ body {
 	box-shadow: 0 10px 50px rgba(0, 0, 0, .3);
 }
 
-.game {
+.players-wrapper {
 	display: flex;
 }
 

@@ -1,6 +1,6 @@
 const element = {
-	wrapper: document.querySelector('.wrapper'),
-	game: document.querySelector('.game'),
+	appWrapper: document.querySelector('.app-wrapper'),
+	playersWrapper: document.querySelector('.players-wrapper'),
 	btnNew: document.querySelector('.btn--new'),
 	finalScore: document.querySelector('.final-score__input'),
 };
@@ -8,7 +8,9 @@ const element = {
 const strings = {
 	btnHold: 'btn--hold',
 	btnRoll: 'btn--roll',
-	diceWrapper: 'dice__wrapper',
+	playerActive: 'player--active',
+	playerWinner: 'player--winner',
+	dice: 'dice'
 };
 
 export { element, strings };
