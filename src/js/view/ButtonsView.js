@@ -4,13 +4,8 @@ import { element, strings } from '../config';
  * A hold & roll buttons view manager object.
  */
 class ButtonsView {
-	constructor() {
-		this.onClickRollDice = null;
-		this.onClickHoldScore = null;
-	}
-
 	/**
-	 * Method renders hold and roll buttons and adds event listeners to them
+	 * Method renders hold and roll buttons
 	 * @returns {undefined}
 	 */
 	render() {
@@ -19,11 +14,6 @@ class ButtonsView {
 			<button class="btn ${strings.btnHold}">Hold</button>
 		`;
 		element.appWrapper.insertAdjacentHTML('afterbegin', view);
-
-		this.btnRoll = document.querySelector(`.${strings.btnRoll}`);
-		this.btnHold = document.querySelector(`.${strings.btnHold}`);
-		this.btnRoll.addEventListener('click', this.onClickRollDice);
-		this.btnHold.addEventListener('click', this.onClickHoldScore);
 	}
 
 	/**

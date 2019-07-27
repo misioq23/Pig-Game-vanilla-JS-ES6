@@ -17,7 +17,7 @@ class GameController {
 		this.maxScore = maxScore;
 	}
 	/**
-	 * Method inits newGame, resets GUI, binds methods for roll and hold buttons and renders them
+	 * Method inits new game: firstly resets GUI next renders players, roll and hold buttons
 	 * @returns {undefined} inits game
 	 */
 	init() {
@@ -26,9 +26,6 @@ class GameController {
 		this.diceView.remove();
 		// renders player's interface
 		this.playersView.render();
-		// binds methods to buttons
-		this.buttonsView.onClickRollDice = this.rollDice.bind(this);
-		this.buttonsView.onClickHoldScore = this.holdScore.bind(this);
 		// renders buttons with event listeners
 		this.buttonsView.render();
 	}

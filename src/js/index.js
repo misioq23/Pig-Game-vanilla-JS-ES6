@@ -6,14 +6,24 @@ import PlayersView from './view/PlayersView';
 import DicesView from './view/DicesView';
 import ButtonsView from './view/ButtonsView';
 
-const init = () => {
-	const nameArray = ['Player 1', 'Player 2'];
+const newGame = {
+	nameArray: ['Player 1', 'Player 2'],
+	players: {},
+	activeGame: {},
+	maxScore: 0,
 
-	const players = new PlayersModel(nameArray);
-	const maxScore = parseInt(element.finalScore.value, 10);
+	init() {
+		this.players = new PlayersModel(this.nameArray);
+		this.maxScore = parseInt(element.finalScore.value, 10);
 
-	const newGame = new GameController(players, new DicesModel(), new PlayersView(players), new DicesView(), new ButtonsView(), maxScore);
-	newGame.init();
+		this.activeGame = new GameController(this.players, new DicesModel(), new PlayersView(this.players), new DicesView(), new ButtonsView(), this.maxScore);
+		this.activeGame.init();
+	}
 };
 
-element.btnNew.addEventListener('click', init);
+element.appWrapper.addEventListener('click', e => {
+	const clicked = e.target;
+	if (clicked.classList.contains('btn--new')) newGame.init();
+	if (clicked.classList.contains('btn--roll')) newGame.activeGame.rollDice();
+	if (clicked.classList.contains('btn--hold')) newGame.activeGame.holdScore();
+});
