@@ -38,7 +38,7 @@ body {
 
 .final-score__label {
 	position: absolute;
-	top: 530px;
+	bottom: 60px;
 	left: 50%;
 	padding: 10px;
 	width: 160px;
@@ -51,7 +51,7 @@ body {
 
 .final-score__input{
 	position: absolute;
-	top: 560px;
+	bottom: 20px;
 	left: 50%;
 	padding: 10px;
 	width: 160px;
@@ -60,8 +60,7 @@ body {
 	text-transform: uppercase;
 	font-size: 18px;
 	transform: translateX(-50%);
-}
-
-.final-score__input:focus {
-	outline: none;
+	&:focus {
+		outline: none;
+	}
 }
