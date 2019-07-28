@@ -43,15 +43,18 @@ class GameController {
 	 * @returns {undefined}
 	 */
 	rollDice() {
+		const { numbers } = this.dices;
+		const { activePlayer } = this.players;
 		// draws random numbers and renders them
-		this.diceView.render(this.dices.roll());
+		this.dices.roll();
+		this.diceView.render(numbers);
 
 		// updates player's current score
-		this.players.activePlayer.setCurrentScore(this.dices.numbers);
-		this.playersView.showCurrentScore(this.players.activePlayer);
+		this.players.setCurrentScore(numbers);
+		this.playersView.showCurrentScore(activePlayer);
 
 		// if one of a numbers is 1, changes player
-		if (this.dices.numbers.join('') !== '11' && this.dices.numbers.includes(1)) this.changePlayer();
+		if (numbers.includes(1) && numbers.join('') !== '11') this.changePlayer();
 	}
 	/**
 	 * Manages passing active player's currentScore to its total score and then changes active player.
@@ -59,10 +62,10 @@ class GameController {
 	 * @returns {undefined}
 	 */
 	holdScore() {
-		const activePlayer = this.players.activePlayer;
+		const { activePlayer } = this.players;
 		// prevents clicking button if currentScore is 0 or game is over
 		if (activePlayer.score < this.maxScore && activePlayer.currentScore > 0) {
-			activePlayer.setScore();
+			this.players.setScore();
 			this.playersView.showScore(activePlayer);
 			this.diceView.remove();
 			// checks whether the active player is winner

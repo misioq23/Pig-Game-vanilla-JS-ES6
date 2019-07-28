@@ -12,13 +12,12 @@ class DicesModel {
 	}
 	/**
 	 * Method draws the given amount of numbers and assigns it to this.numbers array.
-	 * @returns {array} A new array with values same as in this.numbers
+	 * @returns {undefined}
 	 */
 	roll() {
 		this.numbers[this.iterator++] = randomNumber();
 		if (this.iterator < this.dicesCount) return this.roll();
 		this.iterator = 0;
-		return [...this.numbers];
 	}
 };
 
