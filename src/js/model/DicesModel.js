@@ -1,22 +1,24 @@
 import { randomNumber } from '../utils/utils';
 
 /**
- * A dices' data object
+ * A dices' model object
+ * @param {number} dicesCount amount of numbers to draw
  */
 class DicesModel {
-	constructor() {
+	constructor(dicesCount) {
 		this.numbers = [];
+		this.dicesCount = dicesCount;
+		this.iterator = 0;
 	}
 	/**
-	 * Method draws the given number of numbers and assigns it to this.numbers array
-	 * @param {number} number how many numbers method draws
-	 * @returns {undefined} changes values of this.numbers array
+	 * Method draws the given amount of numbers and assigns it to this.numbers array.
+	 * @returns {array} A new array with values same as in this.numbers
 	 */
-	roll(number) {
-		if (number > 0) {
-			this.numbers[number - 1] = randomNumber();
-			return this.roll(--number);
-		}
+	roll() {
+		this.numbers[this.iterator++] = randomNumber();
+		if (this.iterator < this.dicesCount) return this.roll();
+		this.iterator = 0;
+		return [...this.numbers];
 	}
 };
 

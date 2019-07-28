@@ -15,7 +15,7 @@ const newGame = {
 
 	init() {
 		this.players = new PlayersModel(this.nameArray);
-		this.dices = new DicesModel();
+		this.dices = new DicesModel(2);
 		this.maxScore = parseInt(element.finalScore.value, 10);
 
 		this.activeGame = new GameController(this.players, this.dices, playersView, dicesView, buttonsView, this.maxScore);

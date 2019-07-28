@@ -44,8 +44,7 @@ class GameController {
 	 */
 	rollDice() {
 		// draws random numbers and renders them
-		this.dices.roll(2);
-		this.diceView.render(this.dices.numbers);
+		this.diceView.render(this.dices.roll());
 
 		// updates player's current score
 		this.players.activePlayer.setCurrentScore(this.dices.numbers);
